@@ -30,11 +30,6 @@ namespace COMP123_Lesson9
 
         }
 
-        private void PasswordTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -74,6 +69,43 @@ namespace COMP123_Lesson9
             Debug.WriteLine("Username: " + UsernameTextBox.Text);
             Debug.WriteLine("Password: " + PasswordTextBox.Text);
             this._clearForm();  
+        }
+
+        private void UsernameTextBox_Leave(object sender, EventArgs e)
+        {
+            if (UsernameTextBox.Text.Length < 6)
+            {
+                UsernameTextBox.Focus();
+                UsernameTextBox.SelectAll();
+                PleaseloginLabel.Text = "Username too Short!";
+                PleaseloginLabel.ForeColor = Color.Red;
+            }
+            else
+            {
+                PleaseloginLabel.Text = "Please Login";
+                PleaseloginLabel.ForeColor = Color.Black;
+            }
+        }
+
+        private void PasswordTextBox_Leave(object sender, EventArgs e)
+        {
+            if (PasswordTextBox.Text.Length < 6)
+            {
+                PasswordTextBox.Focus();
+                PasswordTextBox.SelectAll();
+                PleaseloginLabel.Text = "Password too Short!";
+                PleaseloginLabel.ForeColor = Color.Red;
+
+            }
+            else
+            {
+                PleaseloginLabel.Text = "Please Login";
+                PleaseloginLabel.ForeColor = Color.Black;
+                LoginButton.Enabled = true;
+
+            }
+
+
         }
     }
 }
